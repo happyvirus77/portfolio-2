@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
+const assetBase = import.meta.env.BASE_URL;
+
 const navItems = [
   { label: "Projects", id: "featured" },
   { label: "About", id: "about" },
@@ -60,7 +62,7 @@ const works = [
     tools: ["Runway", "Midjourney"],
     category: "Sci-Fi",
     tags: ["Sci-Fi", "Runway", "Midjourney"],
-    image: "https://picsum.photos/seed/future-city/720/520",
+    video: `${assetBase}videos/01.mp4`,
   },
   {
     title: "Human and Robot Coexistence",
@@ -68,7 +70,7 @@ const works = [
     tools: ["Kling", "Pika"],
     category: "Emotional",
     tags: ["Emotional", "Commercial"],
-    image: "https://picsum.photos/seed/robot-coexistence/720/520",
+    video: `${assetBase}videos/02.mp4`,
   },
   {
     title: "Cyberpunk City Chase",
@@ -76,7 +78,7 @@ const works = [
     tools: ["Runway", "Pika"],
     category: "Cyberpunk",
     tags: ["Cyberpunk", "Runway"],
-    image: "https://picsum.photos/seed/cyberpunk-chase/720/520",
+    video: `${assetBase}videos/03.mp4`,
   },
   {
     title: "Smart Classroom",
@@ -84,7 +86,7 @@ const works = [
     tools: ["Midjourney", "Kling"],
     category: "Commercial",
     tags: ["Commercial", "Midjourney"],
-    image: "https://picsum.photos/seed/smart-classroom/720/520",
+    video: `${assetBase}videos/04.mp4`,
   },
   {
     title: "Android Emotional Portrait",
@@ -92,7 +94,7 @@ const works = [
     tools: ["Runway", "Midjourney"],
     category: "Emotional",
     tags: ["Emotional", "Runway", "Midjourney"],
-    image: "https://picsum.photos/seed/android-portrait/720/520",
+    video: `${assetBase}videos/05.mp4`,
   },
   {
     title: "Future Medical Lab",
@@ -100,7 +102,7 @@ const works = [
     tools: ["Pika", "Kling"],
     category: "Sci-Fi",
     tags: ["Sci-Fi", "Commercial"],
-    image: "https://picsum.photos/seed/medical-lab/720/520",
+    video: `${assetBase}videos/06.mp4`,
   },
 ];
 
@@ -335,7 +337,11 @@ function App() {
           {filteredWorks.map((work) => (
             <article className="work-card" key={work.title}>
               <div className="work-image">
-                <img src={work.image} alt={work.title} />
+                {work.video ? (
+                  <video src={work.video} autoPlay muted loop playsInline controls preload="metadata" />
+                ) : (
+                  <img src={work.image} alt={work.title} />
+                )}
               </div>
               <div className="work-content">
                 <div className="work-meta">

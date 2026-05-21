@@ -443,11 +443,15 @@ a {
   overflow: hidden;
 }
 
-.work-card img {
+.work-card img,
+.work-card video {
   display: block;
   width: 100%;
   aspect-ratio: 1.45;
   object-fit: cover;
+}
+
+.work-card img {
   filter: saturate(1.08) contrast(1.02);
   transition: transform 0.4s ease;
 }
